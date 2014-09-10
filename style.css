@@ -84,3 +84,15 @@ a:hover, a:active {
 hr {
     color: #A6A6A6;
 }
+
+/* Definitions */
+th {
+    float: left;
+    clear: left;
+    width: 17%;
+    font-weight: bold;
+}
+td {
+    margin-left: 17%;
+}
+

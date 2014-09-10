@@ -86,10 +86,11 @@ hr {
 }
 
 /* Definitions */
-table {
-    width: 17%;
-}
 th {
     margin-left: 17%;
+}
+
+td {
+    width: 17%;
 }
 

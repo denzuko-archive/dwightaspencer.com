@@ -6,5 +6,5 @@ Home page for Dwight A Spencer.
 
 
 * [Presentation](https://gitpitch.com/denzuko/dwightaspencer.com/gh-pages)
-* [PDF Version](https://gitprint.com/denzuko/dwightaspencer/blob/gh-pages/README.md)
+* [PDF Version](https://gitprint.com/denzuko/dwightaspencer.com/blob/gh-pages/README.md)
 

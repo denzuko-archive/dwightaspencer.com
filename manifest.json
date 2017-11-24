@@ -3,13 +3,15 @@
   "short_name": "denzuko blog",
   "description": "Learn how to create and share something or other.",
   "display": "standalone",
-  "orientation": "landscape",
-  "lang": "en",
-  "prefer_related_applications": true,
+  "orientation": "portrait-primary",
+  "lang": "en-US"
+  "prefer_related_applications": false,
   "related_applications": [{
+   "platform": "web"
+    }, {
     "platform": "play",
-    "id": "net.dapla.freecodecampdallas"
-  }],
+    "url": "https://play.google.com/store/apps/details?id=com.dwightaspencer"
+  }]
   "start_url": "/index.html?utm_source=homescreen",
   "background_color": "#334457",
   "theme_color": "#334457",

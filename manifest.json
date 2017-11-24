@@ -2,9 +2,14 @@
   "name": "Dwight Spencer Homepage",
   "short_name": "denzuko blog",
   "description": "Learn how to create and share something or other.",
-  "display": "fullscreen",
+  "display": "standalone",
   "orientation": "landscape",
   "lang": "en",
+  "prefer_related_applications": true,
+  "related_applications": [{
+    "platform": "play",
+    "id": "net.dapla.freecodecampdallas"
+  }],
   "start_url": "/index.html?utm_source=homescreen",
   "background_color": "#334457",
   "theme_color": "#334457",

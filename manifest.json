@@ -1,0 +1,13 @@
+{
+  "name": "Dwight Spencer Homepage",
+  "short_name": "denzuko blog",
+  "description": "Learn how to create and share something or other.",
+  "start_url": "/index.html",
+  "background_color": "#334457",
+  "theme_color": "#334457",
+  "icons": [{
+    "src": "icon-256.png",
+    "sizes": "256x256",
+    "type": "image/png"
+  }]
+}

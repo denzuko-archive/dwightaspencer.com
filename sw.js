@@ -1,36 +1,25 @@
 var version = 'v1::';
 
-elf.addEventListener("install", function(event) {
+self.addEventListener("install", function(event) {
   console.log('WORKER: install event in progress.');
   event.waitUntil(
-    /* The caches built-in is a promise-based API that helps you cache responses,
-       as well as finding and deleting them.
-    */
-    caches
-      /* You can open a cache by name, and this method returns a promise. We use
-         a versioned cache name here so that we can remove old cache entries in
-         one fell swoop later, when phasing out an older service worker.
-      */
-      .open(version + 'fundamentals')
-      .then(function(cache) {
-        /* After the cache is opened, we can fill it with the offline fundamentals.
-           The method below will add all resources we've indicated to the cache,
-           after making HTTP requests for each of them.
-        */
+    caches.open(version + 'fundamentals').then(function(cache) {
         return cache.addAll([
           '/',
+          '/manifest.json',
           '/style.css',
           '/bundle.js'
-        ]);
+        ].map(function(uri){ return location.origin + uri }));
       })
       .then(function() {
         console.log('WORKER: install completed');
+        self.skipWaiting();
       })
   );
 });
 
 self.addEventListener('fetch', function(event) {
-console.log('WORKER: fetch event in progress.');
+  console.log('WORKER: fetch event in progress.');
 
   /* We should only cache GET requests, and deal with the rest of method in the
      client-side, by handling failed POST,PUT,PATCH,etc. requests.
@@ -48,10 +37,6 @@ console.log('WORKER: fetch event in progress.');
   */
   event.respondWith(
     caches
-      /* This method returns a promise that resolves to a cache entry matching
-         the request. Once the promise is settled, we can then provide a response
-         to the fetch request.
-      */
       .match(event.request)
       .then(function(cached) {
         /* Even if the response is in our cache, we go to the network as well.
@@ -133,9 +118,6 @@ console.log('WORKER: fetch event in progress.');
 });
 
 self.addEventListener("activate", function(event) {
-  /* Just like with the install event, event.waitUntil blocks activate on a promise.
-     Activation will fail unless the promise is fulfilled.
-  */
   console.log('WORKER: activate event in progress.');
 
   event.waitUntil(

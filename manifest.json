@@ -2,10 +2,10 @@
   "name": "Dwight Spencer Homepage",
   "short_name": "denzuko blog",
   "description": "Learn how to create and share something or other.",
-  "display": "standalone",
+  "display": "fullscreen",
   "orientation": "landscape",
   "lang": "en",
-  "start_url": "/index.html",
+  "start_url": "/index.html?utm_source=homescreen",
   "background_color": "#334457",
   "theme_color": "#334457",
   "icons": [{

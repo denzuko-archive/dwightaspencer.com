@@ -1,6 +1,6 @@
 @title[Introduction]
 
-# Git<span class="gold">Linux Shell Scripting</span>
+# <span class="gold">Linux Shell Scripting</span>
 
 #### Quick Bytes on Linux Shell Scripting.*
 <br>
@@ -9,11 +9,8 @@
 
 ---
 
-@title[PITCHME.md]
-
-#### GitPitch turns <span class="gold">PITCHME.md</span> into
-#### interactive,
-#### online and offline slideshows.
+@title[Bash]
+#### $ echo "Hello ${USER}"
 <br>
 <span class="aside">Just like this one...</span>
 

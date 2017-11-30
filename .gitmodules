@@ -1,0 +1,9 @@
+[submodule "downloads/docker/assets"]
+	path = downloads/docker/assets
+	url = https://github.com/denzuko-devops/assets
+[submodule "downloads/puppet/reporters/xmpp"]
+	path = downloads/puppet/reporters/xmpp
+	url = https://github.com/denzuko/puppet-reporters-xmpp
+[submodule "downloads/ansible/via-tor"]
+	path = downloads/ansible/via-tor
+	url = https://github.com/denzuko/com.denzuko.poc.AnsibleOverTor

@@ -8,8 +8,7 @@
 # Site settings
 title: Web Development - Rule 21
 email: dwightaspencer@gmail.com
-description: >
-Full Stack Solutions architect
+description: Full Stack Solutions architect
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://dwightaspencer.com" # the base hostname & protocol for your site
 twitter_username: denzuko

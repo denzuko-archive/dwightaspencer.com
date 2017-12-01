@@ -22,6 +22,8 @@ destination: public
 sass:
   sass_dir: assets/css/modules
   style: compressed
+  
+permalink: /:categories/:year/:month/:day/:title/index.html
 
 # live reload
 livereload: true

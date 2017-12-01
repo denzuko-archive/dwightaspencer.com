@@ -23,7 +23,7 @@ sass:
   sass_dir: assets/css/modules
   style: compressed
   
-permalink: /:categories/:year/:month/:day/:title/index.html
+permalink: /:categories/:title/
 
 # live reload
 livereload: true

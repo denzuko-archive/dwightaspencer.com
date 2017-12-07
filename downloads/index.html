@@ -36,15 +36,16 @@
       <div class="mdc-card demo-card" id="item.reponame">
         <section class="mdc-card__media demo-card__16-9-media"></section>
           <section class="mdc-card__primary">
-            <h1 class="mdc-card__title mdc-card__title--large">item.reponame</h1>
-            <h2 class="mdc-card__subtitle">item.reponame</h2>
+            <h1 class="mdc-card__title mdc-card__title--large"><%= item.name %></h1>
+            <h2 class="mdc-card__subtitle"><%= item.reponame %></h2>
           </section>
           <section class="mdc-card__supporting-text">
               Description here...
           </section>
           <section class="mdc-card__actions">
+            <% if(item.has_downloads)
             <a href="#" class="material-icons mdc-card__action" aria-label="Download" alt="Download">Download</a>
-            <a href="#" class="material-icons mdc-card__action" aria-label="Bug-report" alt="Submit a bug report">Submit a bug report</a>
+            <a href="<%= item.issues_url %>" class="material-icons mdc-card__action" aria-label="Bug-report" alt="Submit a bug report">Submit a bug report</a>
           </section>
       </div>
       <% }) %>
@@ -91,19 +92,35 @@
     </main>
     <footer>
       <script src="https://unpkg.com/material-components-web/dist/material-components-web.js"></script>
-      <script nonce="">
-        const templates = { 'cards': $('#card-data').html() },
-              octo      = new Github();
-        
-        octo.getUser('denzuko')
-            .getRepos()
-            .done((repos) => { 
+      <script nonce="">                
+        (() => {
+          const templates = { 'cards': $('#card-data').html },
+                octo      = new Github();
+          
+          octo.getUser('denzuko')
+              .getRepos()
+              .done((repos) => { 
                 console.log(repos);
-                $("repos").after(templates["cards"], {repos});
-            })
-            .fail((err) => console.log(err));
+                $("repos").after(templates["cards"], {repos});})
+              .fail((err) => console.log(err));
         
-        mdc.autoInit();
+        ``mdc.autoInit();
+
+          let pollId = setInterval(() => {
+            let pos = getComputedStyle(document.querySelector('.mdc-toolbar')).position;
+            
+            if (pos === 'fixed' || pos === 'relative') {
+              let ratioSpan = document.querySelector("#ratio"),
+                  toolbar = mdc.toolbar.MDCToolbar.attachTo(document.querySelector('.mdc-toolbar'));
+                  toolbar.listen('MDCToolbar:change', (evt) => {
+                    ratioSpan.innerHTML = evt.detail.flexibleExpansionRatio.toFixed(2);
+                  });
+              
+              toolbar.fixedAdjustElement = document.querySelector('.mdc-toolbar-fixed-adjust');
+              
+              clearInterval(pollId);
+          }}, 250);
+        });
       </script>
     </footer>
   </body>

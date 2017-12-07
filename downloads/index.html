@@ -31,7 +31,7 @@
   </head>
   <body class="mdc-typography">
     <script type="text/html" id='card-data'>
-      <% _.each(items,function(item,key,list){ %>   
+      <% _.each(repos, (item,key,list) => { %>   
       <div class="mdc-card demo-card" id="item.reponame">
         <section class="mdc-card__media demo-card__16-9-media"></section>
           <section class="mdc-card__primary">
@@ -66,9 +66,16 @@
       <script src="https://unpkg.com/material-components-web/dist/material-components-web.js"></script>
       <script nonce="">
         const octo = new Github();
+        const templates = {
+          "cards": $("#card-data").html()
+        };
         
-        octo.getUser('denzuko').getRepos()
-            .done((repos) => { $("repos").html(_.template( $("#card-data").html(), {repos:items} )); })
+        octo.getUser('denzuko')
+            .getRepos()
+            .done((repos) => { 
+              console.log(repos);
+              $("repos").after(templates.cards({repos});
+            })
             .fail((err) => console.log(err));
         
         mdc.autoInit();

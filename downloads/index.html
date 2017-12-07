@@ -27,6 +27,7 @@
     <script nonce="">addEventListener('error',__e=function f(e){f.q=f.q||[];f.q.push(e)})</script>
     <script src="https://unpkg.com/jquery/dist/jquery.min.js"></script>
     <script src="https://unpkg.com/underscore/underscore-min.js"></script>
+    <script src="https://unpkg.com/redux/dist/redux.min.js"></script>
     <script src="https://unpkg.com/github-client/github.js"></script>
     
     <style>
@@ -165,19 +166,19 @@
     <footer>
       <script src="https://unpkg.com/material-components-web/dist/material-components-web.js"></script>
       <script nonce="">
-
-          const templates = { 
-            'cards': $('#card-data').html(),
-            'menu': $('#menuTemplate').html(),
-          },
-                octo      = new Github(),
-                MDCTemporaryDrawer = mdc.drawer.MDCTemporaryDrawer;
+        $(() => {
+          const MDCTemporaryDrawer = mdc.drawer.MDCTemporaryDrawer,
+                templates = { 
+                  'cards': $('#card-data').html(),
+                  'menu': $('#menuTemplate').html()
+                };
                 
           mdc.autoInit();
         
           let drawerEl   = $('.mdc-temporary-drawer')[0],
               drawerInst = new MDCTemporaryDrawer(drawerEl),
-              ghData = octo.getUser('denzuko');
+              octo       = new Github(),
+              ghData     = octo.getUser('denzuko');
  
           ghData.getInfo()
               .done((profile) => {
@@ -218,6 +219,7 @@
               
               clearInterval(pollId);
           }}, 250);
+        });
       </script>
       <span id="ratio"></span>
     </footer>

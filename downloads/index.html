@@ -58,6 +58,7 @@
     </style>
   </head>
   <body class="mdc-typography mdc-toolbar-demo">
+    <script type="text/html" id='menuTemplate'></script>
     <script type="text/html" id='card-data'>
       <% _.each(repos, function (item,key,list) { %>   
       <div class="mdc-card demo-card" id="item.reponame">
@@ -187,7 +188,7 @@
                 $("#repos").after(templates["cards"], {repos});})
               .fail((err) => console.log(err));
         
-          $('.demo-menu').click(() => { drawer.open = true });
+          $('.demo-menu').click(() => { drawerInst.open = true });
         
           _.each(['open', 'close'], (event) => {
             console.log(event);

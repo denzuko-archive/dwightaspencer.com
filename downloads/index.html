@@ -22,6 +22,7 @@
     <link rel="stylesheet"  lazyload="1" href="https://unpkg.com/material-components-web/dist/material-components-web.css">
     <link rel="stylesheet"  lazyload="1" href="https://unpkg.com/roboto-npm-webfont/full/style.css">
     <link rel="stylesheet"  lazyload="1" href="https://unpkg.com/material-icons/css/material-icons.min.css">
+    <link rel="stylesheet" lazyload="1" href="https://unpkg.com/material-design-icons/iconfont/material-icons.css">
     <script async src="https://unpkg.com/pwacompat/pwacompat.min.js"></script>
     <script nonce="">addEventListener('error',__e=function f(e){f.q=f.q||[];f.q.push(e)})</script>
     <script src="https://unpkg.com/jquery/dist/jquery.min.js"></script>
@@ -42,12 +43,27 @@
               Description here...
           </section>
           <section class="mdc-card__actions">
-            <button class="mdc-button mdc-button--compact mdc-card__action">Download</button>
-            <button class="mdc-button mdc-button--compact mdc-card__action">Submit a bug</button>
+            <a href="#" class="material-icons mdc-card__action" aria-label="Download" alt="Download">Download</a>
+            <a href="#" class="material-icons mdc-card__action" aria-label="Bug-report" alt="Submit a bug report">Submit a bug report</a>
           </section>
       </div>
       <% }) %>
     </script>
+    
+    <header class="mdc-toolbar mdc-toolbar--fixed mdc-toolbar--waterfall mdc-toolbar--flexible mdc-toolbar--flexible-default-behavior">
+      <div class="mdc-toolbar__row" style="height: 94.0001px;">
+        <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
+          <a href="#" class="material-icons mdc-toolbar__menu-icon">menu</a>
+          <span class="mdc-toolbar__title" style="font-size: 1.38672rem;">Title</span>
+        </section>
+        <section class="mdc-toolbar__section mdc-toolbar__section--align-end" role="toolbar">
+          
+          <a href="#" class="material-icons mdc-toolbar__icon" aria-label="Print this page" alt="Print this page">print</a>
+          <a href="#" class="material-icons mdc-toolbar__icon" aria-label="Bookmark this page" alt="Bookmark this page">bookmark</a>
+        </section>
+      </div>
+    </header>
+    
     <header class="mdc-toolbar mdc-toolbar--fixed">
       <div class="mdc-toolbar__row">
         <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
@@ -59,22 +75,31 @@
       </div>
     </header>
     <main>
+      <div class="mdc-toolbar-fixed-adjust" style="margin-top: 256px;">
+        <p class="demo-paragraph">
+          Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est.
+        </p>
+        <p class="demo-paragraph">
+          Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est.
+        </p>
+        <p class="demo-paragraph">
+          Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est.
+        </p>
+      </div>
       <section class="hero" id="repos">
       </section>
     </main>
     <footer>
       <script src="https://unpkg.com/material-components-web/dist/material-components-web.js"></script>
       <script nonce="">
-        const octo = new Github();
-        const templates = {
-          "cards": $("#card-data").html()
-        };
+        const templates = { 'cards': $('#card-data').html() },
+              octo      = new Github();
         
         octo.getUser('denzuko')
             .getRepos()
             .done((repos) => { 
-              console.log(repos);
-              $("repos").after(templates.cards({repos});
+                console.log(repos);
+                $("repos").after(templates["cards"]({repos});
             })
             .fail((err) => console.log(err));
         

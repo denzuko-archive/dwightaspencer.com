@@ -37,15 +37,15 @@
         <section class="mdc-card__media demo-card__16-9-media"></section>
           <section class="mdc-card__primary">
             <h1 class="mdc-card__title mdc-card__title--large"><%= item.name %></h1>
-            <h2 class="mdc-card__subtitle"><%= item.reponame %></h2>
+            <h2 class="mdc-card__subtitle"><%= item.description %></h2>
           </section>
           <section class="mdc-card__supporting-text">
               Description here...
           </section>
           <section class="mdc-card__actions">
-            <% if(item.has_downloads)
-            <a href="#" class="material-icons mdc-card__action" aria-label="Download" alt="Download">Download</a>
-            <a href="<%= item.issues_url %>" class="material-icons mdc-card__action" aria-label="Bug-report" alt="Submit a bug report">Submit a bug report</a>
+            <a href="<%= item.html_url %>" class="material-icons mdc-card__action" aria-label="Download" alt="Download">Download</a>
+            <a href="<%= item.clone_url %>" class="material-icons mdc-card__action" aria-label="Clone" alt="Clone">Clone</a>
+            <% if(item.has_issues) { %><a href="<%= item.html_url %>/issues/new" class="material-icons mdc-card__action" aria-label="Bug-report" alt="Submit a bug report">Submit a bug report</a><% } %>
           </section>
       </div>
       <% }) %>

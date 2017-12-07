@@ -101,6 +101,7 @@
     <aside class="mdc-temporary-drawer" style="">
       <nav class="mdc-temporary-drawer__drawer">
         <header class="mdc-temporary-drawer__header">
+          <img id="profile" src="https://avatars0.githubusercontent.com/u/19776?v=4">
           <div class="mdc-temporary-drawer__header-content mdc-theme--primary-bg mdc-theme--text-primary-on-primary" id="site_name">
           </div>
         </header>
@@ -140,6 +141,7 @@
       </nav>
     </aside>
     <main>
+      <div class="mdc-toolbar-fixed-adjust"></div>
       <div class="mdc-toolbar-fixed-adjust" style="margin-top: 256px;">
         <p class="demo-paragraph">
           Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est.
@@ -169,6 +171,7 @@
  
           ghDenzuko.getInfo()
               .done((profile) => {
+                
                 $("#site_info").text(profile.name);
                 $("#bio").text(profile.bio); })
               .fail((err) => console.log(err));

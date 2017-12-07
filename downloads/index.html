@@ -63,7 +63,7 @@
     <footer>
       <script src="https://unpkg.com/material-components-web/dist/material-components-web.js"></script>
       <script nonce="">
-        const octo = new GitHub();
+        const octo = new Github();
         
         octo.getUser('denzuko').getRepos()
             .done((repos) => { $("repos").html(_.template( $("#card-data").html(), {repos:items} )); })

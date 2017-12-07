@@ -93,7 +93,6 @@
     <footer>
       <script src="https://unpkg.com/material-components-web/dist/material-components-web.js"></script>
       <script nonce="">                
-        (() => {
           const templates = { 'cards': $('#card-data').html },
                 octo      = new Github();
           
@@ -110,18 +109,19 @@
             let pos = getComputedStyle(document.querySelector('.mdc-toolbar')).position;
             
             if (pos === 'fixed' || pos === 'relative') {
-              let ratioSpan = document.querySelector("#ratio"),
-                  toolbar = mdc.toolbar.MDCToolbar.attachTo(document.querySelector('.mdc-toolbar'));
-                  toolbar.listen('MDCToolbar:change', (evt) => {
-                    ratioSpan.innerHTML = evt.detail.flexibleExpansionRatio.toFixed(2);
-                  });
+              let ratioSpan = $("#ratio"),
+                  toolbar   = mdc.toolbar.MDCToolbar.attachTo($('.mdc-toolbar'));
+              
+              toolbar.listen('MDCToolbar:change', (evt) => {
+                ratioSpan.innerHTML = evt.detail.flexibleExpansionRatio.toFixed(2);
+              });
               
               toolbar.fixedAdjustElement = document.querySelector('.mdc-toolbar-fixed-adjust');
               
               clearInterval(pollId);
           }}, 250);
-        });
       </script>
+      <span id="ratio"></span>
     </footer>
   </body>
 </html>

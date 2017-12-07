@@ -86,13 +86,15 @@
           <span class="mdc-toolbar__title" style="font-size: 10rem;">Releases</span>
         </section>
         <section class="mdc-toolbar__section mdc-toolbar__section--align-end" role="toolbar">
-          
+        
           <a id="share-menu-left" href="#" class="material-icons mdc-toolbar__icon" aria-label="Share this page" alt="Share this page">share</a>
-          <ul class="mdc-menu mdc-menu--bottom-right mdc-js-menu mdc-js-ripple-effect" for="my-menu-bottom-left">
-            <li class="mdc-menu__item">Facebook</li>
-            <li class="mdc-menu__item">Twitter</li>
-            <li disabled class="mdc-menu__item">Google Plus</li>
-          </ul>
+          <div class="mdc-simple-menu" tabindex="-1">
+            <ul class="mdc-simple-menu__items mdc-list" role="menu" aria-hidden="true">
+              <li class="mdc-menu__item">Facebook</li>
+              <li class="mdc-menu__item">Twitter</li>
+              <li disabled class="mdc-menu__item">Google Plus</li>
+            </ul>
+          </dev>
 
           <a href="#" class="material-icons mdc-toolbar__icon" aria-label="Bookmark this page" alt="Bookmark this page">bookmark</a>
         </section>
@@ -159,14 +161,17 @@
       <script src="https://unpkg.com/material-components-web/dist/material-components-web.js"></script>
       <script nonce="">
 
-          const templates = { 'cards': $('#card-data').html },
+          const templates = { 
+            'cards': $('#card-data').html(),
+            'menu': $('#menuTemplate').html(),
+          },
                 octo      = new Github(),
                 MDCTemporaryDrawer = mdc.drawer.MDCTemporaryDrawer,
                 ghDenzuko = octo.getUser('denzuko');
                
           mdc.autoInit();
         
-          let drawerEl   = $('.mdc-temporary-drawer'),
+          let drawerEl   = $('.mdc-temporary-drawer')[0],
               drawerInst = new MDCTemporaryDrawer(drawerEl);
  
           ghDenzuko.getInfo()
@@ -192,18 +197,18 @@
           });
 
           const pollId = setInterval(() => {
-            var mdcToolbarElm = document.querySelector('.mdc-toolbar');
+            var mdcToolbarElm = $('.mdc-toolbar')[0];
             let pos = window.getComputedStyle(mdcToolbarElm).position;
             
             if (pos === 'fixed' || pos === 'relative') {
-              var ratioSpan = $("#ratio"),
+              var ratioSpan = $("#ratio")[0],
                   toolbar   = mdc.toolbar.MDCToolbar.attachTo(mdcToolbarElm);
               
               toolbar.listen('MDCToolbar:change', (evt) => {
                 ratioSpan.innerHTML = evt.detail.flexibleExpansionRatio.toFixed(2);
               });
               
-              toolbar.fixedAdjustElement = $('.mdc-toolbar-fixed-adjust');
+              toolbar.fixedAdjustElement = $('.mdc-toolbar-fixed-adjust')[0];
               
               clearInterval(pollId);
           }}, 250);

@@ -103,10 +103,10 @@
                 $("repos").after(templates["cards"], {repos});})
               .fail((err) => console.log(err));
         
-        ``mdc.autoInit();
+          mdc.autoInit();
 
           let pollId = setInterval(() => {
-            let pos = getComputedStyle(document.querySelector('.mdc-toolbar')).position;
+            let pos = getComputedStyle($('.mdc-toolbar')).position;
             
             if (pos === 'fixed' || pos === 'relative') {
               let ratioSpan = $("#ratio"),

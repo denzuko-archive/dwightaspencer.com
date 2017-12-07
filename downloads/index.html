@@ -84,7 +84,7 @@
       <div class="mdc-toolbar__row" style="height: 94.0001px;">
         <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
           <a href="#" class="demo-menu material-icons mdc-toolbar__menu-icon">menu</a>
-          <span class="mdc-toolbar__title" style="font-size: 10rem;">Releases</span>
+          <span class="mdc-toolbar__title">Releases</span>
         </section>
         <section class="mdc-toolbar__section mdc-toolbar__section--align-end" role="toolbar">
         
@@ -171,15 +171,15 @@
             'menu': $('#menuTemplate').html(),
           },
                 octo      = new Github(),
-                MDCTemporaryDrawer = mdc.drawer.MDCTemporaryDrawer,
-                ghDenzuko = octo.getUser('denzuko');
-               
+                MDCTemporaryDrawer = mdc.drawer.MDCTemporaryDrawer;
+                
           mdc.autoInit();
         
           let drawerEl   = $('.mdc-temporary-drawer')[0],
-              drawerInst = new MDCTemporaryDrawer(drawerEl);
+              drawerInst = new MDCTemporaryDrawer(drawerEl),
+              ghData = octo.getUser('denzuko');
  
-          ghDenzuko.getInfo()
+          ghData.getInfo()
               .done((profile) => {
                 console.log(profile);
 
@@ -187,10 +187,10 @@
                 $("#bio").text(profile.bio); })
               .fail((err) => console.log(err));
 
-          ghDenzuko.getRepos()
+          ghData.getRepos()
               .done((repos) => { 
                 console.log(repos);
-                $("#repos").after(templates["cards"], {repos});})
+                $("#repos").after( _.templatetemplates['cards'], {repos: repos})); })
               .fail((err) => console.log(err));
         
           $('.demo-menu').click(() => { drawerInst.open = true });

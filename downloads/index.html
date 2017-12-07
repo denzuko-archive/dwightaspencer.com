@@ -83,7 +83,7 @@
       <div class="mdc-toolbar__row" style="height: 94.0001px;">
         <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
           <a href="#" class="demo-menu material-icons mdc-toolbar__menu-icon">menu</a>
-          <span class="mdc-toolbar__title" style="font-size: 1.38672rem;">Releases</span>
+          <span class="mdc-toolbar__title" style="font-size: 10rem;">Releases</span>
         </section>
         <section class="mdc-toolbar__section mdc-toolbar__section--align-end" role="toolbar">
           
@@ -182,12 +182,13 @@
           $('.demo-menu').click(() => { drawer.open = true });
         
           _.each(['open', 'close'], (event) => {
+            console.log(event);
             drawerEl.addEventListener('MDCTemporaryDrawer'+event, () => {
               console.log('Received MDCTemporaryDrawer:'+event);
             });
           });
 
-          let pollId = setInterval(() => {
+          const pollId = setInterval(() => {
             var mdcToolbarElm = document.querySelector('.mdc-toolbar');
             let pos = window.getComputedStyle(mdcToolbarElm).position;
             

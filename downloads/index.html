@@ -16,16 +16,15 @@
     <meta name="twitter:widgets:link-color" content="#334457"> 
     <meta name='mobile-web-app-capable' content='yes'>
     
-    <link rel="icon" sizes="192x192" href="https://talk.dallasmakerspace.org/user_avatar/talk.dallasmakerspace.org/denzuko/192/3082_1.png" type="image/png">
-    <link rel="stylesheet" href="https://unpkg.com/material-components-web/dist/material-components-web.css">
-    <link rel="stylesheet" href="https://unpkg.com/roboto-npm-webfont/full/style.css">
-    <link rel="stylesheet" href="https://unpkg.com/material-icons/css/material-icons.min.css">
-    <script async src="https://cdn.rawgit.com/GoogleChrome/pwacompat/v1.0.3/pwacompat.min.js"></script>
+    <link rel="icon"  lazyload="1" sizes="192x192" href="https://talk.dallasmakerspace.org/user_avatar/talk.dallasmakerspace.org/denzuko/192/3082_1.png" type="image/png">
+    <link rel="stylesheet"  lazyload="1" href="https://unpkg.com/material-components-web/dist/material-components-web.css">
+    <link rel="stylesheet"  lazyload="1" href="https://unpkg.com/roboto-npm-webfont/full/style.css">
+    <link rel="stylesheet"  lazyload="1" href="https://unpkg.com/material-icons/css/material-icons.min.css">
+    <script async src="https://unpkg.com/pwacompat/pwacompat.min.js"></script>
     <script nonce="">addEventListener('error',__e=function f(e){f.q=f.q||[];f.q.push(e)}) </script>
-    <script src="https://unpkg.com/octokat/dist/node/request.js"></script>
-    <script src="https://unpkg.com/github-client/github.js"></script>
-    <script src="https://unpkg.com/lodash/lodash.min.js"></script>
-    <script src="https://unpkg.com/material-components-web/dist/material-components-web.min.js"></script>
+    <script async src="https://unpkg.com/github-client/github.js"></script>
+    <script async src="https://unpkg.com/underscore/underscore-min.js"></script>
+    <script async src="https://unpkg.com/material-components-web/dist/material-components-web.min.js"></script>
 
   </head>
   <body class="mdc-typography">
@@ -67,7 +66,7 @@
         const octo = new GitHub();
         
         octo.getUser('denzuko').getRepos()
-            .done((repos) => { $("repos").html(_.template( cardTemplate,{repos:items} )); })
+            .done((repos) => { $("repos").html(_.template( $("#card-data").html(), {repos:items} )); })
             .fail((err) => console.log(err));
         
         mdc.autoInit();

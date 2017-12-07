@@ -23,8 +23,10 @@
     <script async src="https://unpkg.com/pwacompat/pwacompat.min.js"></script>
     <script nonce="">addEventListener('error',__e=function f(e){f.q=f.q||[];f.q.push(e)})</script>
     <script async src="https://unpkg.com/underscore/underscore-min.js"></script>
+    <script async src="https://unpkg.com/underscore/underscore-min.js"></script>
     <script async src="https://unpkg.com/material-components-web/dist/material-components-web.min.js"></script>
     <script async src="https://unpkg.com/github-client/github.js"></script>
+    
 
   </head>
   <body class="mdc-typography">
@@ -61,8 +63,8 @@
       </section>
     </main>
     <footer>
-      <script src="https://unpkg.com/material-components-web/dist/material-components-web.js"></script>
-      <script>
+      <script async src="https://unpkg.com/material-components-web/dist/material-components-web.js"></script>
+      <script nonce="">
         const octo = new GitHub();
         
         octo.getUser('denzuko').getRepos()

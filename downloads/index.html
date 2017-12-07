@@ -20,11 +20,19 @@
       </div>
     </header>
     <main>
-      <h2 class="mdc-typography--display2">Hello, Material Components!</h2>
-      <div class="mdc-text-field" data-mdc-auto-init="MDCTextField">
-        <input type="text" class="mdc-text-field__input" id="demo-input">
-        <label for="demo-input" class="mdc-text-field__label">Tell us how you feel!</label>
-      </div>
+      <section class="hero">
+        <div class="mdc-card demo-card">
+          <section class="mdc-card__media demo-card__16-9-media"></section>
+          <section class="mdc-card__primary">
+            <h1 class="mdc-card__title mdc-card__title--large">Title goes here</h1>
+            <h2 class="mdc-card__subtitle">Subtitle here</h2>
+          </section>
+          <section class="mdc-card__actions">
+            <button class="mdc-button mdc-button--compact mdc-card__action">Download</button>
+            <button class="mdc-button mdc-button--compact mdc-card__action">Submit a bug</button>
+          </section>
+        </div>
+      </section>
     </main>
     <footer>
       <script src="https://unpkg.com/material-components-web/dist/material-components-web.js"></script>

@@ -32,7 +32,7 @@
   </head>
   <body class="mdc-typography">
     <script type="text/html" id='card-data'>
-      <% _.each(repos, (item,key,list) => { %>   
+      <% _.each(repos, function (item,key,list) { %>   
       <div class="mdc-card demo-card" id="item.reponame">
         <section class="mdc-card__media demo-card__16-9-media"></section>
           <section class="mdc-card__primary">
@@ -68,7 +68,7 @@
       <div class="mdc-toolbar__row">
         <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
           <span class="catalog-back">
-            <a href="/" class="mdc-toolbar__menu-icon"><i class="material-icons"></i></a>
+            <a href="#" class="material-icons mdc-toolbar__menu-icon">menu</a>
           </span>
           <span class="mdc-toolbar__title catalog-title">Releases</span>
         </section>
@@ -99,7 +99,7 @@
             .getRepos()
             .done((repos) => { 
                 console.log(repos);
-                $("repos").after(templates["cards"]({repos});
+                $("repos").after(templates["cards"]({repos}));
             })
             .fail((err) => console.log(err));
         

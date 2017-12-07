@@ -29,6 +29,33 @@
     <script src="https://unpkg.com/underscore/underscore-min.js"></script>
     <script src="https://unpkg.com/github-client/github.js"></script>
     
+    <style>
+      .mdc-toolbar-demo {
+        margin: 0px;
+      }
+      .mdc-toolbar__row:first-child::after {
+        background-image: url("https://talk.dallasmakerspace.org//uploads/default/original/2X/2/26555fad09526a01522f669b15fecee1c0a444e9.jpg");
+        background-size: cover;
+        background-position: center;
+      }
+      .demo-paragraph {
+        margin: 0px;
+        padding: 20px 28px;
+      }
+      @media (max-width: 599px) {
+        .demo-paragraph {
+          padding: 16px;
+        }
+      }
+      footer {
+        position: fixed;
+        bottom: 20px;
+        width: 100%;
+        text-align: center;
+        color: red;
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+    </style>
   </head>
   <body class="mdc-typography">
     <script type="text/html" id='card-data'>

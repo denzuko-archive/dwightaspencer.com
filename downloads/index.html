@@ -99,7 +99,7 @@
             .getRepos()
             .done((repos) => { 
                 console.log(repos);
-                $("repos").after(templates["cards"]({repos}));
+                $("repos").after(templates["cards"], {repos});
             })
             .fail((err) => console.log(err));
         

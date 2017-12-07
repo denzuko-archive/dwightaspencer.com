@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us" class="" itemscope itemtype="http://schema.org/WebSite" prefix="og: http://ogp.me/ns#">
   <head>
-    <meta http-equiv="refresh" content="0;URL=https://github.com/denzuko?tab=repositories">
+    <!--meta http-equiv="refresh" content="0;URL=https://github.com/denzuko?tab=repositories"-->
     <link href="http://gmpg.org/xfn/11" rel="profile">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -70,8 +70,9 @@
               Description here...
           </section>
           <section class="mdc-card__actions">
-            <a href="<%= item.html_url %>" class="material-icons mdc-card__action" aria-label="Download" alt="Download">Download</a>
-            <a href="<%= item.clone_url %>" class="material-icons mdc-card__action" aria-label="Clone" alt="Clone">Clone</a>
+            <a href="<%= item.html_url %>" class="material-icons mdc-card__action" aria-label="Purchase Licence" alt="Purchase">file download</a>
+            <a href="<%= item.html_url %>" class="material-icons mdc-card__action" aria-label="Download" alt="Download">file download</a>
+            <a href="<%= item.clone_url %>" class="material-icons mdc-card__action" aria-label="Clone" alt="Clone">content copy</a>
             <% if(item.has_issues) { %><a href="<%= item.html_url %>/issues/new" class="material-icons mdc-card__action" aria-label="Bug-report" alt="Submit a bug report">Submit a bug report</a><% } %>
           </section>
       </div>
@@ -86,7 +87,13 @@
         </section>
         <section class="mdc-toolbar__section mdc-toolbar__section--align-end" role="toolbar">
           
-          <a href="#" class="material-icons mdc-toolbar__icon" aria-label="Print this page" alt="Print this page">print</a>
+          <a id="share-menu-left" href="#" class="material-icons mdc-toolbar__icon" aria-label="Share this page" alt="Share this page">share</a>
+          <ul class="mdc-menu mdc-menu--bottom-right mdc-js-menu mdc-js-ripple-effect" for="my-menu-bottom-left">
+            <li class="mdc-menu__item">Facebook</li>
+            <li class="mdc-menu__item">Twitter</li>
+            <li disabled class="mdc-menu__item">Google Plus</li>
+          </ul>
+
           <a href="#" class="material-icons mdc-toolbar__icon" aria-label="Bookmark this page" alt="Bookmark this page">bookmark</a>
         </section>
       </div>
@@ -94,8 +101,7 @@
     <aside class="mdc-temporary-drawer" style="">
       <nav class="mdc-temporary-drawer__drawer">
         <header class="mdc-temporary-drawer__header">
-          <div class="mdc-temporary-drawer__header-content mdc-theme--primary-bg mdc-theme--text-primary-on-primary">
-            Header here
+          <div class="mdc-temporary-drawer__header-content mdc-theme--primary-bg mdc-theme--text-primary-on-primary" id="site_name">
           </div>
         </header>
         <nav class="mdc-temporary-drawer__content mdc-list-group">
@@ -115,6 +121,9 @@
           </div>
 
           <hr class="mdc-list-divider">
+          <p id="bio" class="demo-paragraph"></p>
+          <hr class="mdc-list-divider">
+
 
           <div class="mdc-list">
             <a class="mdc-list-item" href="#" data-mdc-tabindex-handled="true" tabindex="-1">
@@ -142,55 +151,58 @@
           Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est.
         </p>
       </div>
-      <section class="hero" id="repos">
-      </section>
+      <section class="hero" id="repos"></section>
     </main>
     <footer>
       <script src="https://unpkg.com/material-components-web/dist/material-components-web.js"></script>
-      <script nonce="">                
+      <script nonce="">
+
           const templates = { 'cards': $('#card-data').html },
-                octo      = new Github();
-          
-          octo.getUser('denzuko')
-              .getRepos()
-              .done((repos) => { 
-                console.log(repos);
-                $("repos").after(templates["cards"], {repos});})
-              .fail((err) => console.log(err));
-        
+                octo      = new Github(),
+                MDCTemporaryDrawer = mdc.drawer.MDCTemporaryDrawer,
+                ghDenzuko = octo.getUser('denzuko');
+               
           mdc.autoInit();
         
+          let drawerEl   = $('.mdc-temporary-drawer'),
+              drawerInst = new MDCTemporaryDrawer(drawerEl);
+ 
+          ghDenzuko.getInfo()
+              .done((profile) => {
+                $("#site_info").text(profile.name);
+                $("#bio").text(profile.bio); })
+              .fail((err) => console.log(err));
+
+          ghDenzuko.getRepos()
+              .done((repos) => { 
+                console.log(repos);
+                $("#repos").after(templates["cards"], {repos});})
+              .fail((err) => console.log(err));
         
-      var drawerEl = document.querySelector('.mdc-temporary-drawer');
-      var MDCTemporaryDrawer = mdc.drawer.MDCTemporaryDrawer;
-      var drawer = new MDCTemporaryDrawer(drawerEl);
-      document.querySelector('.demo-menu').addEventListener('click', function() {
-        drawer.open = true;
-      });
-      drawerEl.addEventListener('MDCTemporaryDrawer:open', function() {
-        console.log('Received MDCTemporaryDrawer:open');
-      });
-      drawerEl.addEventListener('MDCTemporaryDrawer:close', function() {
-        console.log('Received MDCTemporaryDrawer:close');
-      });
-    
-/*
+          $('.demo-menu').click(() => { drawer.open = true });
+        
+          _.each(['open', 'close'], (event) => {
+            drawerEl.addEventListener('MDCTemporaryDrawer'+event, () => {
+              console.log('Received MDCTemporaryDrawer:'+event);
+            });
+          });
+
           let pollId = setInterval(() => {
-            let pos = getComputedStyle($('.mdc-toolbar')).position;
+            var mdcToolbarElm = document.querySelector('.mdc-toolbar');
+            let pos = window.getComputedStyle(mdcToolbarElm).position;
             
             if (pos === 'fixed' || pos === 'relative') {
-              let ratioSpan = $("#ratio"),
-                  toolbar   = mdc.toolbar.MDCToolbar.attachTo($('.mdc-toolbar'));
+              var ratioSpan = $("#ratio"),
+                  toolbar   = mdc.toolbar.MDCToolbar.attachTo(mdcToolbarElm);
               
               toolbar.listen('MDCToolbar:change', (evt) => {
                 ratioSpan.innerHTML = evt.detail.flexibleExpansionRatio.toFixed(2);
               });
               
-              toolbar.fixedAdjustElement = document.querySelector('.mdc-toolbar-fixed-adjust');
+              toolbar.fixedAdjustElement = $('.mdc-toolbar-fixed-adjust');
               
               clearInterval(pollId);
           }}, 250);
-          */
       </script>
       <span id="ratio"></span>
     </footer>

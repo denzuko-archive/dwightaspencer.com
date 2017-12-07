@@ -2,11 +2,11 @@
 <html>
   <head>
       <!-meta http-equiv="refresh" content="0;URL=https://github.com/denzuko?tab=repositories"-->
-      <script src="https://unpkg.com/github-api/dist/GitHub.bundle.min.js"></script>
+      <script src="https://unpkg.com/octokat/dist/node/octokat.js"></script>
       <script src="https://unpkg.com/lodash/dist/lodash.min.js"></script>
-      <link rel="stylesheet"
-          href="https://unpkg.com/material-components-web/dist/material-components-web.css">
-      <script src="https://unpkg.com/material-components-web/dist/material-components-web.js"></script>
+      <link rel="stylesheet" href="https://unpkg.com/material-components-web/dist/material-components-web.css">
+      <link rel="stylesheet" href="https://unpkg.com/roboto-npm-webfont@1.0.1/full/style.css">
+      <script src="https://unpkg.com/jquery/dist/jquery.min.js"></script>
     </head>
   <body class="mdc-typography">
     <header class="mdc-toolbar mdc-toolbar--fixed">
@@ -27,7 +27,25 @@
       </div>
     </main>
     <footer>
-      <script>mdc.autoInit()</script>
+      <script src="https://unpkg.com/material-components-web/dist/material-components-web.js"></script>
+      <script>
+        var octo = new Octokat();
+        
+        octo.zen.read().then((err, message) => {
+          if (err) { throw new Error(err) }
+          alert(message)
+        });
+        
+        octo.users('denzuko').repos.fetch().then((err, repos) => {
+          $("main").append($("ul")).after(() => {
+            let cards = [];
+            _.each(repos, (repo) => { cards.push($("li").text(repo)) });
+            return cards;
+          })
+        });
+        
+        mdc.autoInit();
+      </script>
     </footer>
   </body>
 </html>

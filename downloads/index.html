@@ -61,22 +61,24 @@
   <body class="mdc-typography mdc-toolbar-demo">
     <script type="text/html" id='menuTemplate'></script>
     <script type="text/html" id='card-data'>
-      <% _.each(repos, function (item,key,list) { %>   
-      <div class="mdc-card demo-card" id="item.reponame">
+      <% _.each(repos, (repo) => { %>   
+      <div class="mdc-card demo-card" id="repo.name">
         <section class="mdc-card__media demo-card__16-9-media"></section>
           <section class="mdc-card__primary">
-            <h1 class="mdc-card__title mdc-card__title--large"><%= item.name %></h1>
-            <h2 class="mdc-card__subtitle"><%= item.description %></h2>
+            <h1 class="mdc-card__title mdc-card__title--large"><%= repo.name %></h1>
+            <h2 class="mdc-card__subtitle"><%= repo.description %></h2>
           </section>
           <section class="mdc-card__supporting-text">
               Description here...
           </section>
           <section class="mdc-card__actions">
-            <a href="<%= item.html_url %>" class="material-icons mdc-card__action" aria-label="Purchase Licence" alt="Purchase">file download</a>
-            <a href="<%= item.html_url %>" class="material-icons mdc-card__action" aria-label="Download" alt="Download">file download</a>
-            <a href="<%= item.clone_url %>" class="material-icons mdc-card__action" aria-label="Clone" alt="Clone">content copy</a>
-            <% if(item.has_issues) { %><a href="<%= item.html_url %>/issues/new" class="material-icons mdc-card__action" aria-label="Bug-report" alt="Submit a bug report">Submit a bug report</a><% } %>
+            <a href="<%= repo.html_url %>" class="material-icons mdc-card__action" aria-label="Purchase Licence" alt="Purchase">file download</a>
+            <a href="<%= repo.html_url %>" class="material-icons mdc-card__action" aria-label="Download" alt="Download">file download</a>
+            <a href="<%= repo.clone_url %>" class="material-icons mdc-card__action" aria-label="Clone" alt="Clone">content copy</a>
+            <% if(repo.has_issues) { %>
+            <a href="<%= repo.html_url %>/issues/new" class="material-icons mdc-card__action" aria-label="Bug-report" alt="Submit a bug report">Submit a bug report</a><% } %>
           </section>
+        </section>
       </div>
       <% }) %>
     </script>
@@ -134,7 +136,7 @@
             <a class="mdc-list-item" href="#" data-mdc-tabindex-handled="true" tabindex="-1">
               <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">poll</i>Home
             </a>
-            <a class="mdc-list-item" href="#" data-mdc-tabindex-handled="true" tabindex="0">
+            <a class="mdc-list-item" href="#" data-mdc-tabindex-handled="true" tabindex="-1">
               <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">cloud download</i>Releases
             </a>
 
@@ -179,6 +181,8 @@
               drawerInst = new MDCTemporaryDrawer(drawerEl),
               octo       = new Github(),
               ghData     = octo.getUser('denzuko');
+          
+          console.log(ghData);
  
           ghData.getInfo()
               .done((profile) => {
@@ -194,7 +198,7 @@
                 $("#repos").after( _.templatetemplates['cards'], {repos: repos})); })
               .fail((err) => console.log(err));
         
-          $('.demo-menu').click(() => { drawerInst.open = true });
+          $('.demo-menu').click(() => drawerInst.open = true);
         
           _.each(['open', 'close'], (event) => {
             console.log(event);
@@ -203,7 +207,7 @@
             });
           });
 
-          const pollId = setInterval(() => {
+          var pollId = setInterval(() => {
             var mdcToolbarElm = $('.mdc-toolbar')[0];
             let pos = window.getComputedStyle(mdcToolbarElm).position;
             

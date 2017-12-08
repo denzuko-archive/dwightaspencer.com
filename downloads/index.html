@@ -166,14 +166,14 @@
     <footer>
       <script src="https://unpkg.com/material-components-web/dist/material-components-web.js"></script>
       <script nonce="">
-        $(() => {
+        $(document).ready(() => {
+          mdc.autoInit();
+          
           const MDCTemporaryDrawer = mdc.drawer.MDCTemporaryDrawer,
                 templates = { 
                   'cards': $('#card-data').html(),
-                  'menu': $('#menuTemplate').html()
+                  'menu':  $('#menuTemplate').html()
                 };
-                
-          mdc.autoInit();
         
           let drawerEl   = $('.mdc-temporary-drawer')[0],
               drawerInst = new MDCTemporaryDrawer(drawerEl),
@@ -198,7 +198,7 @@
         
           _.each(['open', 'close'], (event) => {
             console.log(event);
-            drawerEl.addEventListener('MDCTemporaryDrawer'+event, () => {
+            drawerEl.addEventListener('MDCTemporaryDrawer:'+event, () => {
               console.log('Received MDCTemporaryDrawer:'+event);
             });
           });

@@ -181,8 +181,6 @@
               drawerInst = new MDCTemporaryDrawer(drawerEl),
               octo       = new Github(),
               ghData     = octo.getUser('denzuko');
-          
-          console.log(ghData);
  
           ghData.getInfo()
               .done((profile) => {
@@ -198,6 +196,8 @@
                 $("#repos").after( _.templatetemplates['cards'], {repos: repos})); })
               .fail((err) => console.log(err));
         
+          console.log(ghData);
+          
           $('.demo-menu').click(() => drawerInst.open = true);
         
           _.each(['open', 'close'], (event) => {

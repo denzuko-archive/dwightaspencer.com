@@ -141,7 +141,7 @@
     <footer>
       <script src="https://unpkg.com/material-components-web/dist/material-components-web.js"></script>
       <script nonce="">
-        $(document).ready(() => {
+        $(document).ready(function() {
           mdc.autoInit();
           
           const MDCTemporaryDrawer = mdc.drawer.MDCTemporaryDrawer,
@@ -156,15 +156,14 @@
               ghData     = octo.getUser('denzuko');
  
           ghData.getInfo()
-              .done((profile) => {
+              .done(function(profile) {
                 console.log(profile);
-
                 $("#site_info").text(profile.name);
                 $("#bio").text(profile.bio); })
               .fail((err) => console.log(err));
 
           ghData.getRepos()
-              .done((repos) => { 
+              .done(function(repos) { 
                 console.log(repos);
                 $("#repos").after( _.templatetemplates['cards'], {repos: repos})); })
               .fail((err) => console.log(err));
@@ -173,14 +172,14 @@
           
           $('.demo-menu').click(() => drawerInst.open = true);
         
-          _.each(['open', 'close'], (event) => {
+          _.each(['open', 'close'], function(event) {
             console.log(event);
             drawerEl.addEventListener('MDCTemporaryDrawer:'+event, () => {
               console.log('Received MDCTemporaryDrawer:'+event);
             });
           });
 
-          var pollId = setInterval(() => {
+          var pollId = setInterval(function() {
             var mdcToolbarElm = $('.mdc-toolbar')[0];
             let pos = window.getComputedStyle(mdcToolbarElm).position;
             

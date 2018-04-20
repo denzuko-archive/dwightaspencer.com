@@ -1,4 +1,6 @@
-## How to Contribute to This Project
+---
+title: How to Contribute to This Project
+---
 
 #### **Did You Find a Bug?**
 

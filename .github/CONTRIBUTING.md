@@ -7,7 +7,7 @@
 
 #### **Did You Write a Patch That Fixes a Bug?**
 
-  * Sign the [Contributor License Agreement](http://www.clahub.com/agreements/clahub/clahub-org-test").
+  * Sign the [Contributor License Agreement](cla).
 
   * Open a new GitHub pull request with the patch.
     1. Fork this project
@@ -26,6 +26,6 @@ Thanks for contributing! :heart:
 
 
 [//]: # (Simply change the urls below to your project information)
-
+[cla]: http://www.clahub.com/agreements/denzuko/dwightaspencer.com
 [issues]: denzuko/dwightaspencer.com/issues
 [new-issue]: denzuko/dwightaspencer.com/issues/new

@@ -1,0 +1,7 @@
+---
+- vagrant: https://app.vagrantup.com/api/v1/user/denzuko
+- docker: https://hub.docker.com/v2/repositories/denzuko
+- github: https://api.github.com/users/denzuko
+- github_repos: https://api.github.com/users/denzuko/repos
+- dms_talk: https://talk.dallasmakerspace.org/users/denzuko.json
+- puppet: https://forgeapi.puppetlabs.com/v3/modules?owner=denzuko

@@ -1,0 +1,14 @@
+name: Hourly Issue management tasks
+on:
+  schedule:
+  - cron: "* */1 * * *"
+jobs:
+  close:
+    name: Close old issues
+    runs-on: ubuntu-latest
+    steps:
+    - uses: lowply/auto-closer@v0.0.5
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        AC_LABEL: "wontfix"
+        AC_KEEP: 3
